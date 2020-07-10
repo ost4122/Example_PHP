@@ -23,7 +23,6 @@ include_once '../common/static.php';
                             userId:function () {
                                 return $('#userId').val();
                             }
-
                         }
                     }
                 }
