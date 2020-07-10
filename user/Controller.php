@@ -10,23 +10,25 @@ else if ($_POST["mode"]) {
 $sql = "";
 $query = "";
 switch ($Mode){
+    /*회원가입*/
     case "register" :
         $pwHash = password_hash($_POST[userPw], PASSWORD_DEFAULT);
         $sql = "INSERT INTO 
-            user(
-                id
-                ,pw
-                ,name
-                ,birth
-                ,registered
-            ) 
-            VALUES(
-                '$_POST[userId]'
-                ,'$pwHash'
-                ,'$_POST[userName]'
-                ,'$_POST[userBirth]'
-                ,NOW()
-            )";
+                    user(
+                        id
+                        ,pw
+                        ,name
+                        ,birth
+                        ,registered
+                    ) 
+                    VALUES(
+                        '$_POST[userId]'
+                        ,'$pwHash'
+                        ,'$_POST[userName]'
+                        ,'$_POST[userBirth]'
+                        ,NOW()
+                    )
+                ";
         if($connect -> connect_error){
             alert("Connection failed: " . $connect->connect_error);
         }
@@ -40,7 +42,25 @@ switch ($Mode){
             }
         }
         break;
-
+    /*아이디 중복확인*/    
+    case "idCheck" :
+        $sql = "SELECT
+                    ID
+                FROM
+                    user
+                WHERE
+                    id='$_POST[userId]'
+                ";
+        $result = $connect -> query($sql);
+        $data = mysqli_fetch_assoc($result);
+        if($data != null || $data != ""){
+            $return = false;
+        }
+        else {
+            $return = true;
+        }
+        echo $return;
+        break;
 }
 
 ?>

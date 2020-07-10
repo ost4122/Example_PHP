@@ -6,46 +6,76 @@ include_once '../common/static.php';
         color:red;
     }
 </style>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script>
-    $(function () {
+    $(function(){
         $.extend($.validator.messages,{
             required: "<span class='vaildatorSpan'>필수 입력 사항입니다.</span>"
         });
         $("#ragisterForm").validate({
-           rules: {
-               userId : {
-                   required : true
-                   ,rangelength : [5, 20]
-               }
-               ,userPw : {
-                   required : true
-                   ,rangelength : [8, 16]
-               }
-               ,pwCheck : {
-                   required : true
-                   ,equalTo : userPw
-               }
-               ,userName : {required : true}
-               ,userBirth : {required : true}
-           },
-           messages : {
+            rules: {
+                userId : {
+                    required : true
+                    ,rangelength : [5, 20]
+                    ,remote : {
+                        url : "Controller.php"
+                        type: post
+                        data : {
+                        }
+                    }
+                }
+                ,userPw : {
+                    required : true
+                    ,rangelength : [8, 16]
+                }
+                ,pwCheck : {
+                    required : true
+                    ,equalTo : "#userPw"
+                }
+                ,userName : {required : true}
+                ,userBirth : {required : true}
+            },
+            messages : {
                 userId : {
                     rangelength : "<span class='vaildatorSpan'>5~20자의 영문 소문자만 사용 가능합니다.</span>"
                 }
                 ,userPw : {
-                   rangelength : "<span class='vaildatorSpan'>8~16자의 패스워드만 사용 가능합니다.</span>"
+                    rangelength : "<span class='vaildatorSpan'>8~16자의 패스워드만 사용 가능합니다.</span>"
                 }
-               ,pwCheck : {
-                   equalTo : "<span class='vaildatorSpan'>패스워드가 일치하지않습니다.</span>"
+                ,pwCheck : {
+                    equalTo : "<span class='vaildatorSpan'>패스워드가 일치하지않습니다.</span>"
                 }
-           },
-           submitHandler: function(form) {
+            },
+            submitHandler: function(form){
                 form.submit();
             }
         });
     });
+    /*아이디 중복확인*/
+    /*  function idCheck(){
+          var userId = document.getElementById("userId");
+          var html ="";
+          $.ajax({
+              url:"Controller.php?mode=idCheck"
+              ,data:{"userId" : userId}
+              ,type:post
+              ,dataType:text
+              ,success(function (result){
+                  if(result===false){
+                      html += "<span class='vaildatorSpan'>중복된 아이디입니다.</span>";
+                      $("#idCheckText").empty().append(html);
+                      return
+                  }else{
+                      html += "<span style='color:green;'>사용가능한 아이디입니다.</span>";
+                      $("#idCheckText").empty().append(html);
+                  }
+              });
+              ,error(function (e){
+                  console.log("에러코드 : "+e);
+              });
+          });
+      }*/
 </script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <div class="container">
     <div class="row">
         <div class="col align-self-center">
@@ -61,7 +91,10 @@ include_once '../common/static.php';
                     <form action="Controller.php?mode=register" name="ragisterForm" id="ragisterForm" method="post">
                         <div class="col align-self-center">
                             <label>아이디</label>
-                            <input class="form-control" type="text" name="userId" id="userId" placeholder="아이디를 입력하세요." />
+                            <input class="form-control" type="text" name="userId" id="userId" placeholder="아이디를 입력하세요."/>
+<!--                            <div class="idCheckText">
+
+                            </div>-->
                         </div>
                         <div class="col align-self-center">
                             <label>패스워드</label>
