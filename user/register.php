@@ -50,30 +50,6 @@ include_once '../common/static.php';
             }
         });
     });
-    /*아이디 중복확인*/
-    /*  function idCheck(){
-          var userId = document.getElementById("userId");
-          var html ="";
-          $.ajax({
-              url:"Controller.php?mode=idCheck"
-              ,data:{"userId" : userId}
-              ,type:post
-              ,dataType:text
-              ,success(function (result){
-                  if(result===false){
-                      html += "<span class='vaildatorSpan'>중복된 아이디입니다.</span>";
-                      $("#idCheckText").empty().append(html);
-                      return
-                  }else{
-                      html += "<span style='color:green;'>사용가능한 아이디입니다.</span>";
-                      $("#idCheckText").empty().append(html);
-                  }
-              });
-              ,error(function (e){
-                  console.log("에러코드 : "+e);
-              });
-          });
-      }*/
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <div class="container">
