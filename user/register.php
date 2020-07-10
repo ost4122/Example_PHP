@@ -39,7 +39,10 @@ include_once '../common/static.php';
                ,pwCheck : {
                    equalTo : "<span class='vaildatorSpan'>패스워드가 일치하지않습니다.</span>"
                 }
-           }
+           },
+           submitHandler: function(form) {
+                form.submit();
+            }
         });
     });
 </script>
@@ -55,7 +58,7 @@ include_once '../common/static.php';
         <div class="card">
             <div class="col align-self-center">
                 <div class="card-body">
-                    <form action="#" name="ragisterForm" id="ragisterForm" method="post">
+                    <form action="Controller.php?mode=register" name="ragisterForm" id="ragisterForm" method="post">
                         <div class="col align-self-center">
                             <label>아이디</label>
                             <input class="form-control" type="text" name="userId" id="userId" placeholder="아이디를 입력하세요." />
