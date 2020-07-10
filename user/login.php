@@ -1,15 +1,19 @@
 <?php
-require_once '../common/static.php';
+include_once '../common/static.php';
 ?>
 <script>
-    /*로그인 버튼*/
-    $("#loginBtn").click(function () {
+    $(function () {
+        /*로그인 버튼*/
+        $("#loginBtn").click(function () {
 
+        });
+
+        /*회원가입 버튼*/
+        $("#registerBtn").click(function () {
+            $(location).attr("href", "register.php");
+        });
     });
-    /*회원가입 버튼*/
-    $("#registerBtn").click(function () {
-        location.href="register.php";
-    })
+
 </script>
 
 
@@ -29,9 +33,9 @@ require_once '../common/static.php';
                     <input class="form-control" type="text" name="userId" placeholder="아이디를 입력하세요"/>
                     <input class="form-control" type="password" name="userPw" placeholder="암호를 입력하세요"/>
 
-                    <button class="btn btn-lg btn-primary btn-block" id="loginBtn"type="submit">로그인</button>
-                    <button class="btn btn-lg btn-primary btn-block" id="registerBtn">회원가입</button>
+                    <button class="btn btn-lg btn-primary btn-block" id="loginBtn" type="submit">로그인</button>
                 </form>
+                <button class="btn btn-lg btn-primary btn-block" id="registerBtn">회원가입</button>
             </div>
         </div>
     </div>

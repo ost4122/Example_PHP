@@ -3,6 +3,6 @@
 $host = 'localhost';
 $user = 'root';
 $pw = '111111';
-$dbname = 'Board';
+$dbname = 'Example';
 $connect = new mysqli($host, $user, $pw, $dbname);
 ?>

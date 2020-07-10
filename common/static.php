@@ -4,8 +4,8 @@
     <title>EXAMPLE-BOARD</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/PHP/Example/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/PHP/Example/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <?php
     if(isset($_SESSION['user'])){
