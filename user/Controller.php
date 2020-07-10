@@ -54,12 +54,11 @@ switch ($Mode){
         $result = $connect -> query($sql);
         $data = mysqli_fetch_assoc($result);
         if($data != null || $data != ""){
-            $return = false;
+            echo false;
         }
         else {
-            $return = true;
+            echo true;
         }
-        echo $return;
         break;
 }
 

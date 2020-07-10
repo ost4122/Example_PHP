@@ -17,9 +17,13 @@ include_once '../common/static.php';
                     required : true
                     ,rangelength : [5, 20]
                     ,remote : {
-                        url : "Controller.php"
-                        type: post
-                        data : {
+                        url : "Controller.php?mode=idCheck"
+                        ,type: "post"
+                        ,data : {
+                            userId:function () {
+                                return $('#userId').val();
+                            }
+
                         }
                     }
                 }
